@@ -5,3 +5,16 @@ Each step increases in complexity. If you have recently been googling, 'how to m
 # Inspiration?
 
 People often do not know where to start when building an end-to-end project. This can provide easy setups for several different use cases.
+
+# Status? 
+
+### DONE
+Step-1
+
+### WIP
+Step-2
+
+### FUTURE
+Step-3: The dreaded first-time hackathon problem: Connecting frontend and backend
+Step-4: Backgrounding requests using Celery
+Step-5: Unclear! Open to suggestions :)
