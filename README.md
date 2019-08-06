@@ -1,41 +1,7 @@
-# Making A Server
+# How do I use this repo?
 
-## What is this repo?
-This is the most simple backend I can think of. Endpoint '/' returns hello world, and /first_endpoint returns another plain string value.
+Each step increases in complexity. If you have recently been googling, 'how to make a server', start with step 1.
 
-[Check it out](https://my-app-simple-server.herokuapp.com/first_endpoint)
+# Inspiration?
 
-## What is a server?
-In most projects, a server is needed to handle requests, heavy computation, interact with databases, etc. 
-
-## What is an endpoint?
-When you visit a website, the various paths you can traverse are referred to as endpoints.
-
-## How do I run this?
-
-### Locally
-```
-pip install requirements.txt
-python app.py
-```
-Open [localhost:5000/first_endpoint](http://localhost:5000/first_endpoint')
-
-That's it!
-
-### Hosted
---> This means people can access it from the internet!
-
-First time:
-```
-heroku login
-heroku create my-app-simple-server
-```
-
-Any new changes:
-```
-git add .
-git commit -m "my first server"
-git push heroku master
-```
-
-Open the url that is generated for you! This will not change between deploys.
+People often do not know where to start when building an end-to-end project. This can provide easy setups for several different use cases.
