@@ -3,7 +3,7 @@
 ## What is this repo?
 This is the most simple backend I can think of. Endpoint '/' returns hello world, and /first_endpoint returns another plain string value.
 
-(Check it out)['https://my-app-simple-server.herokuapp.com/first_endpoint']
+[Check it out](https://my-app-simple-server.herokuapp.com/first_endpoint)
 
 ## What is a server?
 In most projects, a server is needed to handle requests, heavy computation, interact with databases, etc. 
@@ -18,7 +18,7 @@ When you visit a website, the various paths you can traverse are referred to as 
 pip install requirements.txt
 python app.py
 ```
-Open (localhost:5000/first_endpoint)['localhost:5000/first_endpoint']
+Open [localhost:5000/first_endpoint](http://localhost:5000/first_endpoint')
 
 That's it!
 
@@ -34,7 +34,7 @@ heroku create my-app-simple-server
 Any new changes:
 ```
 git add .
-git commit -m "my simple server"
+git commit -m "my first server"
 git push heroku master
 ```
 
