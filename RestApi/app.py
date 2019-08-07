@@ -22,6 +22,11 @@ class User(db.Model):
     def __repr__(self):
         return '<Username %r>' % self.username
 
+class UserSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ('username', 'points')
+
 # Routes
 @app.route("/")
 def hello():
@@ -29,16 +34,27 @@ def hello():
 
 @app.route('/api/v1.0/users', methods=['GET'])
 def get_users():
-    users = db.session.query(User).all()
-    return jsonify({'users': users})
+    all_users = User.query.all()
+    result = users_schema.dump(all_users)
+    return jsonify(result.data)
 
 @app.route('/api/v1.0/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
-    user = db.session.query(User).filter(User.id == user_id)
+    user = User.query.get(user_id) #db.session.query(User).filter(User.id == user_id) 
+    return user_schema.jsonify(user)
 
-    if len(user) == 0:
-        abort(404)
-    return jsonify({'user': user[0]})
+# endpoint to update user
+@app.route("/api/v1.0/users/<int:user_id>", methods=["PUT"])
+def user_update(user_id):
+    user = User.query.get(user_id)
+    username = request.json['username']
+    password = request.json['password']
+
+    user.password = password
+    user.username = username
+
+    db.session.commit()
+    return user_schema.jsonify(user)
 
 # Save user to database and send to success page
 @app.route('/api/v1.0/users', methods=['POST'])
@@ -57,6 +73,14 @@ def create_user():
 
     return jsonify({'error': True})
 
+# endpoint to delete user
+@app.route("/api/v1.0/users/<int:user_id>", methods=["DELETE"])
+def user_delete(id):
+    user = User.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit()
+
+    return user_schema.jsonify(user)
 
 @app.errorhandler(404)
 def not_found(error):
