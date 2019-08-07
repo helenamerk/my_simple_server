@@ -81,7 +81,7 @@ def create_user():
 
 # endpoint to delete user
 @app.route("/api/v1.0/users/<int:user_id>", methods=["DELETE"])
-def user_delete(id):
+def user_delete(user_id):
     user = User.query.get(user_id)
     db.session.delete(user)
     db.session.commit()
