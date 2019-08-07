@@ -5,3 +5,4 @@ psycopg2-binary==2.8.
 flask-heroku==0.1.9
 flask-marshmallow==0.10.1
 marshmallow==2.19.5
+marshmallow-sqlalchemy==0.17.0
