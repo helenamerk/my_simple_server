@@ -22,18 +22,15 @@ class User(db.Model):
     def __repr__(self):
         return '<Username %r>' % self.username
 
-
 # Routes
-
 @app.route("/")
 def hello():
     return "Hello World from api!"
 
 @app.route('/api/v1.0/users', methods=['GET'])
 def get_users():
-    users = db.session.query(User)
+    users = db.session.query(User).all()
     return jsonify({'users': users})
-
 
 @app.route('/api/v1.0/users/<int:user_id>', methods=['GET'])
 def get_user(user_id):
@@ -42,7 +39,6 @@ def get_user(user_id):
     if len(user) == 0:
         abort(404)
     return jsonify({'user': user[0]})
-
 
 # Save user to database and send to success page
 @app.route('/api/v1.0/users', methods=['POST'])
@@ -56,7 +52,8 @@ def create_user():
             reg = User(username, password)
             db.session.add(reg)
             db.session.commit()
-            return jsonify({'user': reg})
+            #return jsonify({'user': reg})
+            return 'Success'
 
     return jsonify({'error': True})
 
