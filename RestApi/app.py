@@ -30,6 +30,9 @@ class UserSchema(ma.Schema):
         # Fields to expose
         fields = ('username', 'points')
 
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
+
 # Routes
 @app.route("/")
 def hello():
