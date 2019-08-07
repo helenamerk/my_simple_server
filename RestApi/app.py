@@ -1,11 +1,14 @@
 from flask import Flask, jsonify, abort, make_response, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_heroku import Heroku
+from flask_marshmallow import Marshmallow
+
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/local-db'
 heroku = Heroku(app)
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
 
 # Create our database model
 class User(db.Model):
