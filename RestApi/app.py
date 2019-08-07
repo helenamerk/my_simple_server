@@ -25,6 +25,10 @@ class User(db.Model):
 
 # Routes
 
+@app.route("/")
+def hello():
+    return "Hello World from api!"
+
 @app.route('/api/v1.0/users', methods=['GET'])
 def get_users():
     users = db.session.query(User)
@@ -63,5 +67,4 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    app.debug = True
     app.run()
