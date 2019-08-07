@@ -49,9 +49,8 @@ def get_user(user_id):
 def create_user():
     username = None
     if request.method == 'POST':
-        data = request.get_json()
-        username = data['username']
-        password = data['password']
+        username = request.form['username']
+        password = request.form['password']
         # Check that username does not already exist (not a great query, but works)
         if not db.session.query(User).filter(User.username == username).count():
             reg = User(username, password)
