@@ -36,8 +36,9 @@ A standardized way of interacting with resources. Helpful tip -- include version
 Each _user_ will have the following attributes:
 
 - username: (unique) String type.
-- password: String type.
-- score: Integer type.
+- password_hash: String type.
+- email: String type
+- points: Integer type.
 
 Implementing the first GET route, can be done almost imediately. The slightly more complex part comes when we connect it to a database.
 
@@ -50,13 +51,15 @@ user = [
     {
         'id': 1,
         'username': 'helenamerk',
-        'password': 'super_secret',
+        'password_hash': 'xyxyxyx',
+        'email': 'helena.lmtm@gmail.com',
         'points': 1738
     },
     {
         'id': 2,
         'username': 'player2',
-        'password': 'more_secret',
+        'password_hash': 'xyxyxyx',
+        'email': 'hello@customdomain.com',
         'points': 1506
     },
 ]
@@ -102,10 +105,19 @@ def create_task():
 ```
 
 Before we build these all out, however, let's take a step back and connect this to a database.
+==> Check out a full local db on app_local_db.py
+
+## Connecting to A Database
+
+I will use the following:
+
+- [SQLAlchemy: a Python SQL toolkit](https://www.sqlalchemy.org/)
+- [Marshmallow: deserialization library](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/)
+- [Werkzeug: a Python library with great security functions](https://techmonger.github.io/4/secure-passwords-werkzeug/)
+
+Marshmallow shemas allow our REST api to return values we retrieve from the database.
 
 ## How do I run this?
-
-### Hosted
 
 First time heroku app setup:
 
@@ -125,8 +137,7 @@ git push heroku master
 First time postgres database setup:
 
 ```
-heroku addons:add heroku-postgresql:dev
-heroku pg:promote HEROKU_POSTGRESQL_COLOR_URL
+heroku addons:add heroku-postgresql:hobby-dev
 heroku run python
 >>> from app import db
 >>> db.create_all()
