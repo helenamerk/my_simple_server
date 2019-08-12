@@ -9,10 +9,10 @@ People often do not know where to start when building an end-to-end project. Thi
 # Status? 
 
 ### DONE
-Step-1
+Step-1: FirstEndpoint
 
 ### WIP
-Step-2
+Step-2: RestApi
 
 ### FUTURE
 Step-3: The dreaded first-time hackathon problem: Connecting frontend and backend
